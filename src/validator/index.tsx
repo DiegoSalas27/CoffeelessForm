@@ -6,8 +6,13 @@ import {
   objectIterator
 } from './utils'
 
-export type SchemaProjection<T, I> = {
-  [key in keyof T]?: I
+// map conditional types: https://stackoverflow.com/questions/49138332/typescript-mapped-types-flag-type-with-nesting
+type FieldErrorMapping<T> = {
+  [K in keyof T]?: T[K] extends object ? FieldErrorMapping<T[K]> : FieldValidation[];
+}
+
+type SkipValidationMapping<T> = {
+  [K in keyof T]?: T[K] extends object ? SkipValidationMapping<T[K]> : boolean;
 }
 
 export interface CoffeelessValidator {
@@ -18,19 +23,19 @@ export interface CoffeelessValidator {
   }
 }
 
-interface CoffeFormProps<K, Z> {
+interface CoffeFormProps<T> {
   children: React.ReactNode
   /** Represents the schema to map through and validate */
   initialValues: any
   /** Allows entering validation rules to input fields according to the entity state schema */
-  validationSchema: K | object
+  validationSchema: FieldErrorMapping<T>
   /** Should only be used on forms where certain input validations are optional based on a condition. */
-  skipSchemaValidation?: Z | object
+  skipSchemaValidation?: SkipValidationMapping<T>
 }
 
 interface ProviderProps<T> {
   validationState: T
-  skipSchemaValidation: any
+  skipSchemaValidation?: SkipValidationMapping<T>
   /**
    * Sets the state of the Coffeeless validators which will be validated as the user types
    * @param e React.ChangeEvent<HTMLInputElement>
@@ -68,13 +73,13 @@ const formContext = React.createContext<ProviderProps<any>>(initializer)
  * @param validationSchema Allows entering validation rules to input fields according to the entity state schema
  * @param skipSchemaValidation Should only be used on forms where certain input validations are optional based on a condition.
  */
-export function CoffeelessWrapper<K, Z = any>({
+export function CoffeelessWrapper<T = any>({
   children,
   initialValues,
   validationSchema,
   skipSchemaValidation
-}: CoffeFormProps<K, Z>) {
-  const [validationState, setValidationState] = useState<K | object>(validationSchema)
+}: CoffeFormProps<T>) {
+  const [validationState, setValidationState] = useState<T | object>(validationSchema)
   const [formState, setFormState] = useState({
     error: false,
     formSubmitted: false
