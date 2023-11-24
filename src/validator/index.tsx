@@ -50,7 +50,7 @@ const initializer: ProviderProps<any> = {
 
 const formContext = React.createContext<ProviderProps<any>>(initializer)
 
-export function CoffeelessForm<K, Z = any>({
+export function CoffeelessWrapper<K, Z = any>({
   children,
   initialValues,
   validationSchema,
@@ -112,7 +112,7 @@ export function CoffeelessForm<K, Z = any>({
   )
 }
 
-export const useCoffeelessFormHandler = () => {
+export const useCoffeelessHandler = () => {
   const { handleOnChange, validateFormOnSubmit } = React.useContext(formContext)
 
   return {

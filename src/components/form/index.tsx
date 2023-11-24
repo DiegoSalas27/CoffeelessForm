@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { type AuxProps } from '@ts/interfaces'
-import { useCoffeelessFormHandler } from '@validator/index'
+import { useCoffeelessHandler } from '@validator/index'
 
 type Props = {
   preValidate?: () => boolean
@@ -23,7 +23,7 @@ const Form: React.FC<Props & AuxProps> = ({
   selectedTab
 }) => {
   const [invalidForm, setInvalidForm] = useState(false)
-  const { validateFormOnSubmit } = useCoffeelessFormHandler()
+  const { validateFormOnSubmit } = useCoffeelessHandler()
 
   function handleSubmission(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

@@ -1,4 +1,4 @@
-import { useCoffeelessFormHandler, useCoffeelessValidator } from '@validator/index'
+import { useCoffeelessHandler, useCoffeelessValidator } from '@validator/index'
 import { type ChangeEventHandler } from 'react'
 
 type Props = {
@@ -30,7 +30,7 @@ const Input: React.FC<Props> = ({
   style,
   rows
 }) => {
-  const { handleOnChange } = useCoffeelessFormHandler()
+  const { handleOnChange } = useCoffeelessHandler()
   const contextState = useCoffeelessValidator(name)
 
   const hasError = contextState.field && contextState.field.some((e: any) => e.error)
