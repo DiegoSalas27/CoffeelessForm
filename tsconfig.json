@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "target": "es5",
     "lib": [
       "dom",
@@ -14,6 +15,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
+    "declaration": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react-jsx",
@@ -26,7 +28,5 @@
     //   "@validator/*": ["validator/*"],
     // }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

@@ -9,7 +9,6 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "ignorePatterns": ["src/presentation/css/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
