@@ -1,10 +1,9 @@
 {
   "name": "coffeeless-form",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Form validation made easy for React apps",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "test": "jest --passWithNoTests --no-cache --runInBand",
@@ -48,5 +47,10 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.2"
   },
-  "files": ["dist", "LICENSE", "README.md", "package.json"]
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ]
 }
