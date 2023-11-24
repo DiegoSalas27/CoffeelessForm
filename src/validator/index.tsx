@@ -50,6 +50,11 @@ const initializer: ProviderProps<any> = {
 
 const formContext = React.createContext<ProviderProps<any>>(initializer)
 
+/**
+ * @param initialValues is the state that you use in your react app. Represents the schema to map through and validate
+ * @param validationSchema Allows entering validation rules to input fields according to the entity state schema
+ * @param skipSchemaValidation Should only be used on forms where certain input validations are optional based on a condition.
+ */
 export function CoffeelessWrapper<K, Z = any>({
   children,
   initialValues,
