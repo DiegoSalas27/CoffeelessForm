@@ -87,7 +87,7 @@ export function CoffeelessWrapper<T = any>({
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     const [validations, path] = objectIterator(validationState, e.target.name)
-    const [deepChild, _] = objectIterator(initialValues, e.target.name)
+    const [deepChild, _] = objectIterator({ initialValues, [e.target.name]: e.target.value }, e.target.name)
 
     validations.map((validation: FieldValidation) =>
       validation.validate(deepChild, path)
