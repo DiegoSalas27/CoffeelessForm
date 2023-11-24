@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { type FieldValidation } from './protocols'
-import { recursivelyComputeValidation, stateSchemaUpdateDeepComparison, objectIterator } from './utils'
+import {
+  recursivelyComputeValidation,
+  stateSchemaUpdateDeepComparison,
+  objectIterator
+} from './utils'
 
 export type SchemaProjection<T, I> = {
   [key in keyof T]?: I
 }
 
 export interface CoffeelessValidator {
-  field: any;
+  field: any
   formState: {
-      error: boolean;
-      formSubmitted: boolean;
-  };
+    error: boolean
+    formSubmitted: boolean
+  }
 }
 
 interface CoffeFormProps<K, Z> {
@@ -27,7 +31,15 @@ interface CoffeFormProps<K, Z> {
 interface ProviderProps<T> {
   validationState: T
   skipSchemaValidation: any
+  /**
+   * Sets the state of the Coffeeless validators which will be validated as the user types
+   * @param e React.ChangeEvent<HTMLInputElement>
+   */
   handleOnChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void
+  /**
+   * Used to validate form on submit
+   * @param path is a string that represents the nested level path of validation.
+   */
   validateFormOnSubmit: (path: string) => boolean
   formState: {
     error: boolean
@@ -67,6 +79,10 @@ export function CoffeelessWrapper<K, Z = any>({
     formSubmitted: false
   })
 
+  /**
+   * Sets the state of the Coffeeless validators which will be validated as the user types
+   * @param e React.ChangeEvent<HTMLInputElement>
+   */
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     const [validations, path] = objectIterator(validationState, e.target.name)
     const [deepChild, _] = objectIterator(initialValues, e.target.name)
@@ -78,6 +94,10 @@ export function CoffeelessWrapper<K, Z = any>({
     setValidationState(validationState)
   }
 
+  /**
+   * Used to validate form on submit
+   * @param path is a string that represents the nested level path of validation.
+   */
   function validateFormOnSubmit(path: string): boolean {
     const [deepStateChild, _] = objectIterator(initialValues, path)
     const [deepValidationState, _2] = objectIterator(validationState, path)
@@ -90,7 +110,12 @@ export function CoffeelessWrapper<K, Z = any>({
 
     const errorState = { error: false }
 
-    recursivelyComputeValidation(deepStateChild, deepValidationState, deepSkipSchemaValidation, errorState)
+    recursivelyComputeValidation(
+      deepStateChild,
+      deepValidationState,
+      deepSkipSchemaValidation,
+      errorState
+    )
 
     if (errorState.error) {
       setValidationState(validationState)
@@ -108,10 +133,22 @@ export function CoffeelessWrapper<K, Z = any>({
     return errorState.error
   }
 
-  stateSchemaUpdateDeepComparison(JSON.parse(JSON.stringify(initialValues)), validationState, validationSchema)
+  stateSchemaUpdateDeepComparison(
+    JSON.parse(JSON.stringify(initialValues)),
+    validationState,
+    validationSchema
+  )
 
   return (
-    <formContext.Provider value={{ validationState, skipSchemaValidation, handleOnChange, validateFormOnSubmit, formState }}>
+    <formContext.Provider
+      value={{
+        validationState,
+        skipSchemaValidation,
+        handleOnChange,
+        validateFormOnSubmit,
+        formState
+      }}
+    >
       {children}
     </formContext.Provider>
   )

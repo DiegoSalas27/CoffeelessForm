@@ -1,5 +1,5 @@
 import faker from '@faker-js/faker'
-import { MinLengthFieldError } from '@validator/errors'
+import { MinLengthFieldError } from '../../errors'
 import { MinLengthValidation } from '.'
 
 describe('MinLengthValidation', () => {

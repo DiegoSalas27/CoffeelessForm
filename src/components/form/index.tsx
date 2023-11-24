@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { type AuxProps } from '@ts/interfaces'
-import { useCoffeelessHandler } from '@validator/index'
+import { type AuxProps } from '../../ts/interfaces'
+import { useCoffeelessHandler } from '../../validator'
 
 type Props = {
   preValidate?: () => boolean

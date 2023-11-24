@@ -20,11 +20,11 @@
     "baseUrl": "src",
     "strictNullChecks": true,
     "noEmit": false,
-    "paths": {
-      "@components/*": ["components/*"],
-      "@ts/*": ["ts/*"],
-      "@validator/*": ["validator/*"],
-    }
+    // "paths": {
+    //   "@components/*": ["components/*"],
+    //   "@ts/*": ["ts/*"],
+    //   "@validator/*": ["validator/*"],
+    // }
   },
   "include": [
     "src"

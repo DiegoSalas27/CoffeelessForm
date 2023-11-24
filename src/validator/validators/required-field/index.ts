@@ -1,5 +1,5 @@
-import { RequiredFieldError } from '@validator/errors'
-import { type FieldValidation } from '@validator/protocols'
+import { RequiredFieldError } from '../../errors'
+import { type FieldValidation } from '../../protocols'
 
 export class RequiredFieldValidation implements FieldValidation {
   constructor(public error: Error | null = null) {}

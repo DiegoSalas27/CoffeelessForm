@@ -1,4 +1,4 @@
-import { useCoffeelessHandler, useCoffeelessValidator } from '@validator/index'
+import { useCoffeelessHandler, useCoffeelessValidator } from '../../validator'
 import { type ChangeEventHandler } from 'react'
 
 type Props = {

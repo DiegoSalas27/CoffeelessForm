@@ -1,5 +1,5 @@
 import faker from '@faker-js/faker'
-import { RequiredFieldError } from '@validator/errors'
+import { RequiredFieldError } from '../../errors'
 import { RequiredFieldValidation } from '.'
 
 describe('RequiredFieldValidation', () => {
