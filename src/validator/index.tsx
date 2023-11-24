@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { type FieldValidation } from './protocols'
+import { FieldValidation } from './protocols'
 import {
   recursivelyComputeValidation,
   stateSchemaUpdateDeepComparison,

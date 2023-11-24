@@ -1,5 +1,5 @@
 import { MinLengthFieldError } from '../../errors'
-import { type FieldValidation } from '../../protocols'
+import { FieldValidation } from '../../protocols'
 
 export class MinLengthValidation implements FieldValidation {
   constructor(

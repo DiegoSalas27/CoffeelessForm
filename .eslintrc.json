@@ -59,7 +59,8 @@
         "@typescript-eslint/brace-style": "off",
         "@typescript-eslint/no-invalid-void-type": "off",
         "@typescript-eslint/unbound-method": "off",
-        "@typescript-eslint/consistent-indexed-object-style": "off"
+        "@typescript-eslint/consistent-indexed-object-style": "off",
+        "@typescript-eslint/consistent-type-imports": "off"
       }
     }
   ]

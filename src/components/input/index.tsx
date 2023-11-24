@@ -1,5 +1,5 @@
 import { useCoffeelessHandler, useCoffeelessValidator } from '../../validator'
-import { type ChangeEventHandler } from 'react'
+import { ChangeEventHandler } from 'react'
 
 type Props = {
   onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>

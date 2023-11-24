@@ -1,4 +1,4 @@
-import { type FieldValidation } from '../protocols'
+import { FieldValidation } from '../protocols'
 
 export const recursivelyComputeValidation = (
   deepStateChild: any,
