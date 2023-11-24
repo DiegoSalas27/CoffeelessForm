@@ -1,3 +1,8 @@
 node_modules
 .vscode
 coverage
+public
+src\presentation\css
+*.css
+.env
+jest.config.js

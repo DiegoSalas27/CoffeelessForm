@@ -16,9 +16,15 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "strictNullChecks": true,
+    "noEmit": false,
+    "paths": {
+      "@components/*": ["components/*"],
+      "@ts/*": ["ts/*"],
+      "@validator/*": ["validator/*"],
+    }
   },
   "include": [
     "src"
