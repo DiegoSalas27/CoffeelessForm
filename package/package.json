@@ -1,0 +1,26 @@
+{
+  "name": "coffeeless-form",
+  "version": "1.0.0",
+  "description": "Form validation made easy for React apps",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoSalas27/CoffeelessForm.git"
+  },
+  "keywords": [
+    "form",
+    "validation",
+    "react",
+    "hoc"
+  ],
+  "author": "Diego Salas Noain <dominicsc2hs@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiegoSalas27/CoffeelessForm/issues"
+  },
+  "homepage": "https://github.com/DiegoSalas27/CoffeelessForm#readme"
+}
