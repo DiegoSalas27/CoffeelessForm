@@ -6,3 +6,4 @@ src\presentation\css
 *.css
 .env
 jest.config.js
+webpack.config.js
