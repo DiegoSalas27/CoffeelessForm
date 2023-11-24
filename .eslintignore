@@ -7,3 +7,4 @@ src\presentation\css
 .env
 *.js
 **/*d.ts
+src/index.tsx
