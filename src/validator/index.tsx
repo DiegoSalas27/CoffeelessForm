@@ -8,11 +8,11 @@ import {
 
 // map conditional types: https://stackoverflow.com/questions/49138332/typescript-mapped-types-flag-type-with-nesting
 type FieldErrorMapping<T> = {
-  [K in keyof T]?: T[K] extends object ? FieldErrorMapping<T[K]> : FieldValidation[];
+  [K in keyof T]?: T[K] extends object ? FieldErrorMapping<T[K]> : FieldValidation[]
 }
 
 type SkipValidationMapping<T> = {
-  [K in keyof T]?: T[K] extends object ? SkipValidationMapping<T[K]> : boolean;
+  [K in keyof T]?: T[K] extends object ? SkipValidationMapping<T[K]> : boolean
 }
 
 export interface CoffeelessValidator {
@@ -86,14 +86,16 @@ export function CoffeelessWrapper<T = any>({
   })
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const [validations, path] = objectIterator(validationState, e.target.name)
-    const [deepChild, _] = objectIterator(initialValues, e.target.name)
+    setTimeout(() => {
+      const [validations, path] = objectIterator(validationState, e.target.name)
+      const [deepChild, _] = objectIterator(initialValues, e.target.name)
 
-    validations.map((validation: FieldValidation) =>
-      validation.validate(deepChild, path)
-    ) as Array<Error | null>
+      validations.map((validation: FieldValidation) =>
+        validation.validate(deepChild, path)
+      ) as Array<Error | null>
 
-    setValidationState(validationState)
+      setValidationState(validationState)
+    })
   }
 
   function validateFormOnSubmit(path: string): boolean {

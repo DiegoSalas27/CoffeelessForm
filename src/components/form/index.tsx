@@ -5,11 +5,15 @@ import { useCoffeelessHandler } from '../../validator'
 type Props = {
   preValidate?: () => boolean
   handleSubmit: () => void
-  handleCancel: (e: React.FormEvent<HTMLButtonElement>) => void
+  handleCancel?: (e: React.FormEvent<HTMLButtonElement>) => void
   changeTab?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, tab: string) => void
   submitText?: string
   tabs?: string[]
   selectedTab?: string
+  formErrorMessage?: string
+  includeFormButtons?: boolean
+  errorClass?: string
+  formWrapperClass?: string
 }
 
 const Form: React.FC<Props & AuxProps> = ({
@@ -20,7 +24,11 @@ const Form: React.FC<Props & AuxProps> = ({
   submitText,
   changeTab,
   tabs = [],
-  selectedTab
+  selectedTab,
+  formErrorMessage,
+  includeFormButtons,
+  errorClass,
+  formWrapperClass
 }) => {
   const [invalidForm, setInvalidForm] = useState(false)
   const { validateFormOnSubmit } = useCoffeelessHandler()
@@ -55,7 +63,9 @@ const Form: React.FC<Props & AuxProps> = ({
             {tabs.map((tab, i) => (
               <li key={tab} className="nav-item">
                 <a
-                  onClick={e => { changeTab!(e, tab); }}
+                  onClick={e => {
+                    changeTab!(e, tab)
+                  }}
                   className={`nav-link ${selectedTab === tab && 'active'}`}
                   style={{ cursor: 'pointer' }}
                 >
@@ -65,27 +75,30 @@ const Form: React.FC<Props & AuxProps> = ({
             ))}
           </ul>
           <div className="tab-content" style={{ display: 'contents' }}>
-            <div className="row">{children}</div>
+            <div className={formWrapperClass || 'row'}>{children}</div>
           </div>
         </>
       ) : (
-        <div className="row">{children}</div>
+        <div className={formWrapperClass || 'row'}>{children}</div>
       )}
 
       {/* consider deleting this message when there are no more errors */}
-      {invalidForm && <p className="ml-1 field-error">Please fix the errors in the fields above</p>}
-      <div className="form-footer">
-        <button
-          type="submit"
-          className="btn btn-primary"
-        >
-          { submitText || 'Submit' }
-        </button>
+      {invalidForm && (
+        <p className={errorClass || 'ml-1 field-error'}>
+          {formErrorMessage || 'Please fix the errors in the fields above'}
+        </p>
+      )}
+      {includeFormButtons && (
+        <div className="form-footer">
+          <button type="submit" className="btn btn-primary">
+            {submitText || 'Submit'}
+          </button>
 
-        <button onClick={handleCancel} className="btn btn-light">
-          Cancel
-        </button>
-      </div>
+          <button onClick={handleCancel} className="btn btn-light">
+            Cancel
+          </button>
+        </div>
+      )}
     </form>
   )
 }
