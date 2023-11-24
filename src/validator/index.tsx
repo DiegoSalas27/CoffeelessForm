@@ -63,6 +63,7 @@ const initializer: ProviderProps<any> = {
 const formContext = React.createContext<ProviderProps<any>>(initializer)
 
 /**
+ * Wrapper Component that uses React Context to manipulate the state of a form
  * @param initialValues is the state that you use in your react app. Represents the schema to map through and validate
  * @param validationSchema Allows entering validation rules to input fields according to the entity state schema
  * @param skipSchemaValidation Should only be used on forms where certain input validations are optional based on a condition.
@@ -79,10 +80,6 @@ export function CoffeelessWrapper<K, Z = any>({
     formSubmitted: false
   })
 
-  /**
-   * Sets the state of the Coffeeless validators which will be validated as the user types
-   * @param e React.ChangeEvent<HTMLInputElement>
-   */
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     const [validations, path] = objectIterator(validationState, e.target.name)
     const [deepChild, _] = objectIterator(initialValues, e.target.name)
@@ -94,10 +91,6 @@ export function CoffeelessWrapper<K, Z = any>({
     setValidationState(validationState)
   }
 
-  /**
-   * Used to validate form on submit
-   * @param path is a string that represents the nested level path of validation.
-   */
   function validateFormOnSubmit(path: string): boolean {
     const [deepStateChild, _] = objectIterator(initialValues, path)
     const [deepValidationState, _2] = objectIterator(validationState, path)
@@ -153,7 +146,12 @@ export function CoffeelessWrapper<K, Z = any>({
     </formContext.Provider>
   )
 }
-
+/**
+ * Provides the handleOnChange and validateFormOnSubmit. handleOnChange Sets the state of the
+ * Coffeeless validators which will be validated as the user types. validateFormOnSubmit is used to validate form on submit.
+ * This hook should be used inside the CForm and CInput to provide state validation on the fly and on submission.
+ * @returns handleOnChange, validateFormOnSubmit
+ */
 export const useCoffeelessHandler = () => {
   const { handleOnChange, validateFormOnSubmit } = React.useContext(formContext)
 
@@ -163,6 +161,13 @@ export const useCoffeelessHandler = () => {
   }
 }
 
+/**
+ * Provides the Context State which is composed of the formState that is used internally to set the state of the form
+ * and the field property, which is retrieved based on the name of the field required to validate. This hook should be
+ * used in the CInput to validate input state.
+ * @param name string parameter that tells the coffeeless iterator where to look for validating nested state
+ * @returns field and formState
+ */
 export const useCoffeelessValidator = (name: string | undefined = undefined) => {
   const { validationState, skipSchemaValidation, formState } = React.useContext(formContext)
 
