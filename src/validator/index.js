@@ -39,9 +39,8 @@ export function CoffeelessWrapper(_a) {
         formSubmitted: false
     }), formState = _c[0], setFormState = _c[1];
     function handleOnChange(e) {
-        var _a;
-        var _b = objectIterator(validationState, e.target.name), validations = _b[0], path = _b[1];
-        var _c = objectIterator((_a = { initialValues: initialValues }, _a[e.target.name] = e.target.value, _a), e.target.name), deepChild = _c[0], _ = _c[1];
+        var _a = objectIterator(validationState, e.target.name), validations = _a[0], path = _a[1];
+        var _b = objectIterator(initialValues, e.target.name), deepChild = _b[0], _ = _b[1];
         validations.map(function (validation) {
             return validation.validate(deepChild, path);
         });

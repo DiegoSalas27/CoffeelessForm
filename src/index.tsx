@@ -6,13 +6,21 @@ interface EmailForm {
   name: string
   email: string
   subject: string
-  body: string
+  body: BodyPart
+}
+
+interface BodyPart {
+  part1: string
+  part2: string
 }
 
 const Contact: React.FC = () => {
   const [form, setForm] = useState<EmailForm>({
     name: '',
-    body: '',
+    body: {
+      part1: '',
+      part2: ''
+    },
     email: '',
     subject: ''
   })
@@ -30,7 +38,10 @@ const Contact: React.FC = () => {
     <CoffeelessWrapper<EmailForm>
       initialValues={form}
       validationSchema={{
-        body: Builder.init().required().min(5).build(),
+        body: {
+          part1: Builder.init().required().min(2).build(),
+          part2: Builder.init().required().min(2).build(),
+        },
         email: Builder.init().required().min(5).build(),
         name: Builder.init().required().min(5).build(),
         subject: Builder.init().required().min(5).build()
@@ -65,13 +76,22 @@ const Contact: React.FC = () => {
           value={form.subject}
         />
         <CInput
-          id="body"
-          label="Message"
-          name="body"
+          id="BodyPart1"
+          label="BodyPart1"
+          name="body.part1"
           onChange={onChange}
           placeholder="Enter message here"
           type="textarea"
-          value={form.body}
+          value={form.body.part1}
+        />
+                <CInput
+          id="BodyPart2"
+          label="BodyPart2"
+          name="body.part2"
+          onChange={onChange}
+          placeholder="Enter message here"
+          type="textarea"
+          value={form.body.part2}
         />
       </CForm>
     </CoffeelessWrapper>
