@@ -6,7 +6,7 @@ type Props = {
 }
 
 const ButtonSecondary: React.FC<Props> = ({ onClick, text }) => (
-  <button type="submit" className="btn btn-secondary" onClick={onClick}>
+  <button type="submit" className="cofp-btn cofp-btn-secondary" onClick={onClick}>
     {text}
   </button>
 )

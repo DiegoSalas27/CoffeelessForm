@@ -11,7 +11,7 @@ const ButtonPrimary: React.FC<Props> = ({ onClick, text, style = {}, disabled = 
   <button
     disabled={disabled}
     type="submit"
-    className="btn btn-primary"
+    className="cofp-btn cofp-btn-primary"
     onClick={onClick || (() => {})}
     style={style}
   >
