@@ -1,28 +1,14 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { useCoffeelessHandler, useCoffeelessValidator } from '../../validator';
-var Input = function (_a) {
-    var id = _a.id, name = _a.name, onChange = _a.onChange, placeholder = _a.placeholder, type = _a.type, value = _a.value, label = _a.label, readOnly = _a.readOnly, className = _a.className, checked = _a.checked, style = _a.style, rows = _a.rows;
-    var handleOnChange = useCoffeelessHandler().handleOnChange;
-    var contextState = useCoffeelessValidator(name);
-    var hasError = contextState.field && contextState.field.some(function (e) { return e.error; });
+const Input = ({ id, name, onChange, placeholder, type, value, label, readOnly, className, checked, style, rows }) => {
+    const { handleOnChange } = useCoffeelessHandler();
+    const contextState = useCoffeelessValidator(name);
+    const hasError = contextState.field && contextState.field.some((e) => e.error);
     function onChangeInput(e) {
         onChange && onChange(e);
         contextState.field && handleOnChange(e);
     }
-    return (_jsxs(_Fragment, { children: [label && _jsx("label", __assign({ htmlFor: id }, { children: label })), type === 'textarea' ? (_jsxs(_Fragment, { children: [_jsx("br", {}), _jsx("textarea", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, rows: rows })] })) : (_jsx("input", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', type: type, className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, checked: checked })), hasError &&
-                contextState.field.map(function (e, i) {
-                    return e.error && (_jsx("p", __assign({ className: "field-error .mt-2-error" }, { children: e.error.message }), i));
-                })] }));
+    return (_jsxs(_Fragment, { children: [label && _jsx("label", Object.assign({ htmlFor: id }, { children: label })), type === 'textarea' ? (_jsxs(_Fragment, { children: [_jsx("br", {}), _jsx("textarea", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', className: `${className || 'cofp-form-control'}`, id: id, name: name, placeholder: placeholder, rows: rows })] })) : (_jsx("input", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', type: type, className: `${className || 'cofp-form-control'}`, id: id, name: name, placeholder: placeholder, checked: checked })), hasError &&
+                contextState.field.map((e, i) => e.error && (_jsx("p", Object.assign({ className: "field-error .mt-2-error" }, { children: e.error.message }), i)))] }));
 };
 export default Input;

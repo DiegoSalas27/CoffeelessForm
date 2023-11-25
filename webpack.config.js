@@ -1,6 +1,7 @@
 /** @type {import('webpack').Configuration} */
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = env => {
   return {
@@ -53,6 +54,9 @@ module.exports = env => {
     },
     plugins: [
       new CleanWebpackPlugin(),
+      new MiniCssExtractPlugin({
+        filename: 'main-bundle-[hash].css'
+      }),
     ]
   }
 }

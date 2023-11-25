@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
           part1: Builder.init().required().min(2).build(),
           part2: Builder.init().required().min(2).build()
         },
-        email: Builder.init().required().min(5).build(),
+        email: Builder.init().required().min(5).email().build(),
         name: Builder.init().required().min(5).build(),
         subject: Builder.init().required().min(5).build()
       }}
