@@ -13,7 +13,8 @@ type Props = {
   formErrorMessage?: string
   includeFormButtons?: boolean
   errorClass?: string
-  formWrapperClass?: string
+  formWrapperClass?: string,
+  displayInvalidForm?: boolean
 }
 
 const Form: React.FC<Props & AuxProps> = ({
@@ -28,7 +29,8 @@ const Form: React.FC<Props & AuxProps> = ({
   formErrorMessage,
   includeFormButtons,
   errorClass,
-  formWrapperClass
+  formWrapperClass,
+  displayInvalidForm = true
 }) => {
   const [invalidForm, setInvalidForm] = useState(false)
   const { validateFormOnSubmit } = useCoffeelessHandler()
@@ -83,7 +85,7 @@ const Form: React.FC<Props & AuxProps> = ({
       )}
 
       {/* consider deleting this message when there are no more errors */}
-      {invalidForm && (
+      {invalidForm && displayInvalidForm && (
         <p className={errorClass || 'ml-1-error field-error'}>
           {formErrorMessage || 'Please fix the errors in the fields above'}
         </p>
