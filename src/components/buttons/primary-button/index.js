@@ -10,8 +10,8 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-var Section = function (_a) {
-    var children = _a.children, col = _a.col;
-    return (_jsx("div", __assign({ className: "".concat(col, " grid-margin stretch-card flex-column") }, { children: children })));
+var ButtonPrimary = function (_a) {
+    var onClick = _a.onClick, text = _a.text, _b = _a.style, style = _b === void 0 ? {} : _b, _c = _a.disabled, disabled = _c === void 0 ? false : _c;
+    return (_jsx("button", __assign({ disabled: disabled, type: "submit", className: "cofp-btn cofp-btn-primary", onClick: onClick || (function () { }), style: style }, { children: text })));
 };
-export default Section;
+export default ButtonPrimary;

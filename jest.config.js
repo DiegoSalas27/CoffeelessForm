@@ -9,7 +9,7 @@ module.exports = {
   moduleNameMapper: {
     '@components/(.*)$': '<rootDir>/src/components/$1',
     '@validator/(.*)$': '<rootDir>/src/validator/$1',
-    '\\.scss$': 'identity-obj-proxy',
+    '\\.(scss|css)$': 'identity-obj-proxy',
   },
   transform: {
     '.+\\.(ts|tsx)$': 'ts-jest'

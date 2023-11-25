@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { useCoffeelessHandler, useCoffeelessValidator } from '../../validator';
 var Input = function (_a) {
@@ -9,9 +20,9 @@ var Input = function (_a) {
         onChange && onChange(e);
         contextState.field && handleOnChange(e);
     }
-    return (_jsxs(_Fragment, { children: [label && _jsx("label", { htmlFor: id, children: label }), type === 'textarea' ? (_jsxs(_Fragment, { children: [_jsx("br", {}), _jsx("textarea", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, rows: rows })] })) : (_jsx("input", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', type: type, className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, checked: checked })), hasError &&
+    return (_jsxs(_Fragment, { children: [label && _jsx("label", __assign({ htmlFor: id }, { children: label })), type === 'textarea' ? (_jsxs(_Fragment, { children: [_jsx("br", {}), _jsx("textarea", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, rows: rows })] })) : (_jsx("input", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', type: type, className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, checked: checked })), hasError &&
                 contextState.field.map(function (e, i) {
-                    return e.error && (_jsx("p", { className: "field-error .mt-2-error", children: e.error.message }, i));
+                    return e.error && (_jsx("p", __assign({ className: "field-error .mt-2-error" }, { children: e.error.message }), i));
                 })] }));
 };
 export default Input;
