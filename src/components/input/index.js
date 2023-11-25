@@ -9,9 +9,9 @@ var Input = function (_a) {
         onChange && onChange(e);
         contextState.field && handleOnChange(e);
     }
-    return (_jsxs(_Fragment, { children: [label && _jsx("label", { htmlFor: id, children: label }), type === 'textarea' ? (_jsxs(_Fragment, { children: [_jsx("br", {}), _jsx("textarea", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', className: "".concat(className || 'form-control'), id: id, name: name, placeholder: placeholder, rows: rows })] })) : (_jsx("input", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', type: type, className: "".concat(className || 'form-control'), id: id, name: name, placeholder: placeholder, checked: checked })), hasError &&
+    return (_jsxs(_Fragment, { children: [label && _jsx("label", { htmlFor: id, children: label }), type === 'textarea' ? (_jsxs(_Fragment, { children: [_jsx("br", {}), _jsx("textarea", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, rows: rows })] })) : (_jsx("input", { "data-status": hasError ? 'invalid' : 'valid', style: style, readOnly: readOnly || false, onChange: onChangeInput, value: value !== null && value !== void 0 ? value : '', type: type, className: "".concat(className || 'cofp-form-control'), id: id, name: name, placeholder: placeholder, checked: checked })), hasError &&
                 contextState.field.map(function (e, i) {
-                    return e.error && (_jsx("p", { className: "field-error mt-2", children: e.error.message }, i));
+                    return e.error && (_jsx("p", { className: "field-error .mt-2-error", children: e.error.message }, i));
                 })] }));
 };
 export default Input;

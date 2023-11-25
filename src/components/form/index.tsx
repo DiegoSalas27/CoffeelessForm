@@ -84,17 +84,17 @@ const Form: React.FC<Props & AuxProps> = ({
 
       {/* consider deleting this message when there are no more errors */}
       {invalidForm && (
-        <p className={errorClass || 'ml-1 field-error'}>
+        <p className={errorClass || 'ml-1-error field-error'}>
           {formErrorMessage || 'Please fix the errors in the fields above'}
         </p>
       )}
       {includeFormButtons && (
         <div className="form-footer">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="cofp-btn cofp-btn-primary">
             {submitText || 'Submit'}
           </button>
 
-          <button onClick={handleCancel} className="btn btn-light">
+          <button onClick={handleCancel} className="cofp-btn cofp-btn-light">
             Cancel
           </button>
         </div>

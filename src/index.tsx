@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 
 import { Builder, CForm, CFormGroup, CInput, CSection } from '.'
 import classes from './core.module.css'
+import './css/main.css';
 import { CoffeelessWrapper } from './validator'
 
 interface EmailForm {
@@ -62,7 +63,7 @@ const Contact: React.FC = () => {
         subject: Builder.init().required().min(5).build()
       }}
     >
-      <CForm handleSubmit={() => {}} submitText="Submit" formWrapperClass={classes.row}>
+      <CForm handleSubmit={() => {}} submitText="Submit" formWrapperClass={classes.row} includeFormButtons>
         <CSection col="col-md-6">
           <CFormGroup>
             <CInput

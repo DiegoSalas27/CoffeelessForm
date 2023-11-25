@@ -53,7 +53,7 @@ const Input: React.FC<Props> = ({
             readOnly={readOnly || false}
             onChange={onChangeInput}
             value={value ?? ''}
-            className={`${className || 'form-control'}`}
+            className={`${className || 'cofp-form-control'}`}
             id={id}
             name={name}
             placeholder={placeholder}
@@ -68,7 +68,7 @@ const Input: React.FC<Props> = ({
           onChange={onChangeInput}
           value={value ?? ''}
           type={type}
-          className={`${className || 'form-control'}`}
+          className={`${className || 'cofp-form-control'}`}
           id={id}
           name={name}
           placeholder={placeholder}
@@ -80,7 +80,7 @@ const Input: React.FC<Props> = ({
         contextState.field.map(
           (e: any, i: number) =>
             e.error && (
-              <p key={i} className="field-error mt-2">
+              <p key={i} className="field-error .mt-2-error">
                 {e.error.message}
               </p>
             )
