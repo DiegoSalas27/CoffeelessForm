@@ -23,5 +23,5 @@
     "strictNullChecks": true,
     "noEmit": false
   },
-  "include": ["src"]
+  "include": ["src", "typings.d.ts"]
 }

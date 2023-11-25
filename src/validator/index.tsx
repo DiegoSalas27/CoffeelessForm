@@ -5,6 +5,7 @@ import {
   stateSchemaUpdateDeepComparison,
   objectIterator
 } from './utils'
+import '../css/main.css';
 
 // map conditional types: https://stackoverflow.com/questions/49138332/typescript-mapped-types-flag-type-with-nesting
 type FieldErrorMapping<T> = {
