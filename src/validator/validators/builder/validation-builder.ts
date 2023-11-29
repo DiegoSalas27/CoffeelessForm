@@ -22,8 +22,8 @@ export class ValidationBuilder {
    * Sets a field as required
    * @returns ValidationBuilder
    */
-  required(): ValidationBuilder {
-    this.validations.push(new RequiredFieldValidation())
+  required(message?: string): ValidationBuilder {
+    this.validations.push(new RequiredFieldValidation(message))
     return this
   }
 
@@ -32,8 +32,8 @@ export class ValidationBuilder {
    * @param length number parameter. Represents minimum length of the input
    * @returns ValidationBuilder
    */
-  min(length: number): ValidationBuilder {
-    this.validations.push(new MinLengthValidation(length))
+  min(length: number, message?: string): ValidationBuilder {
+    this.validations.push(new MinLengthValidation(length, message))
     return this
   }
 
